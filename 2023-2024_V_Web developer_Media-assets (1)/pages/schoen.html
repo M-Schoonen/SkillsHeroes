@@ -8,55 +8,69 @@
     <link rel="icon" type="image/x-icon" href="../logo/logo.png">
 </head>
 <body>
+    <!-- nav bar met logo -->
     <nav>    
         <div class="logo">
             <img class="fotoLogo" src="../logo/logo.png" alt="Logo">
         </div>
     </nav>
 
+    <!-- container met een div voor de foto van de schoen met kleur en een foto voor een symbool -->
     <div id="containerProduct">
         <div class="colourBlok">
             <img id="colour-image" src="../products/schoen.png" alt="Product afbeelding"/>
             <img id="symbol-schoen" src="" alt=""/>
         </div>
+        <!-- div voor de knoppen om de kleur en het symbool aan te passen -->
         <div class="buttonContainer">
             <div id="colour-container"></div>
             <div id="symbol-container"></div>
         </div>
     </div>
     <script>
+        // afbeeldingen klaarzetten
         const colourImages = {
             1: '../products/schoen-blauw.png',
             2: '../products/schoen-rood.png',
             3: '../products/schoen-goud.png',
             4: '../products/schoen-zilver.png'
         };
-
+        // slaat een html-element met het id colour-container op in een variabele
         const colourContainer = document.getElementById('colour-container');
-
+        // slaat een html-element met het id colour-image op in een variabele
         const colourImage = document.getElementById('colour-image');
 
+        // Haalt het .json bestand op
         fetch('../dataset.json')
+            // maakt van het bestand een javascript object
             .then(response => response.json())
             .then(data => {
+                // haalt de array uit het .json bestand
                 const colours = data.colours;
 
+                // loopt door elke kleur in de array
                 colours.forEach(colour => {
+                    // maakt een button voor elke kleur
                     const button = document.createElement('button');
+                    // maakt de achtergrondkleur van de button hetzelfde als de hexcode
                     button.style.backgroundColor = colour.hexCode;
+                    // zorgt ervoor dat er iets gebeurt als je op de knop klikt
                     button.addEventListener('click', () => {
+                        // koppelt de afbeeldingen aan de id's
                         colourImage.src = colourImages[colour.id];
+                        // zorgt ervoor dat de afbeelding zichtbaar wordt
                         colourImage.style.display = 'block';
                     });
-
+                    // voegt de knoppen toe aan de container
                     colourContainer.appendChild(button);
                 });
             })
+            // als er een foutmedling is komt deze in de conole
             .catch(error => {
                 console.error('Er is een fout opgetreden bij het ophalen van de producten:', error);
             });
 
-
+            // afbeeldingen klaarzetten
             const symbolImages = {
                 1: '../symbols/symbol-BAM.png',
                 2: '../symbols/symbol-BANG.png',
@@ -68,27 +82,38 @@
                 8: '../symbols/symbol-POW.png',
                 9: '../symbols/symbol-WOW.png'
             };
-
+            // slaat een html-element met het id symbol-container op in een variabele
             const symbolContainer = document.getElementById('symbol-container');
-
+            // slaat een html-element met het id symbol-schoen op in een variabele
             const symbolImage = document.getElementById('symbol-schoen');
 
+            // haalt het .json bestand op
             fetch('../dataset.json')
+                // maakt van het bestand een javascript object
                 .then(response => response.json())
                 .then(data => {
+                    // haalt de array uit het .json bestand
                     const symbols = data.symbols;
 
+                    // loopt door elk symbool in de array
                     symbols.forEach(symbol => {
+                        // maakt een knop voor elk symbool in de array
                         const button = document.createElement('button');
+                        // zet de naam van het symbool in de button
                         button.textContent = symbol.name;
+                        // zorgt ervoor dat er iets gebeurt als je op de knop klikt
                         button.addEventListener('click', () => {
+                            // koppelt de afbeeldingen aan de id's
                             symbolImage.src = symbolImages[symbol.id];
+                            // zorgt ervoor dat de afbeelding zichtbaar is
                             symbolImage.style.display = 'block';
                         });
 
+                        // zet de knoppen in de container
                         symbolContainer.appendChild(button);
                     });
                 })
+                // als er een foutmelding is wordt deze in de console gezet
                 .catch(error => {
                     console.error('Er is een fout opgetreden bij het ophalen van de producten:', error);
                 });
