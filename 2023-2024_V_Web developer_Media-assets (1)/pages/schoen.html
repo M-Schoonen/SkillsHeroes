@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schoen</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="icon" type="image/x-icon" href="../logo/logo.png">
+</head>
+<body>
+    <nav>    
+        <div class="logo">
+            <img class="fotoLogo" src="../logo/logo.png" alt="Logo">
+        </div>
+    </nav>
+
+    <div id="containerProduct">
+        <div class="colourBlok">
+            <img id="colour-image" src="../products/schoen.png" alt="Product afbeelding"/>
+            <img id="symbol-schoen" src="" alt=""/>
+        </div>
+        <div class="buttonContainer">
+            <div id="colour-container"></div>
+            <div id="symbol-container"></div>
+        </div>
+    </div>
+    <script>
+        const colourImages = {
+            1: '../products/schoen-blauw.png',
+            2: '../products/schoen-rood.png',
+            3: '../products/schoen-goud.png',
+            4: '../products/schoen-zilver.png'
+        };
+
+        const colourContainer = document.getElementById('colour-container');
+
+        const colourImage = document.getElementById('colour-image');
+
+        fetch('../dataset.json')
+            .then(response => response.json())
+            .then(data => {
+                const colours = data.colours;
+
+                colours.forEach(colour => {
+                    const button = document.createElement('button');
+                    button.style.backgroundColor = colour.hexCode;
+                    button.addEventListener('click', () => {
+                        colourImage.src = colourImages[colour.id];
+                        colourImage.style.display = 'block';
+                    });
+
+                    colourContainer.appendChild(button);
+                });
+            })
+            .catch(error => {
+                console.error('Er is een fout opgetreden bij het ophalen van de producten:', error);
+            });
+
+
+            const symbolImages = {
+                1: '../symbols/symbol-BAM.png',
+                2: '../symbols/symbol-BANG.png',
+                3: '../symbols/symbol-BOO.png',
+                4: '../symbols/symbol-BOOM!.png',
+                5: '../symbols/symbol-LOL.png',
+                6: '../symbols/symbol-OH.png',
+                7: '../symbols/symbol-OMG!.png',
+                8: '../symbols/symbol-POW.png',
+                9: '../symbols/symbol-WOW.png'
+            };
+
+            const symbolContainer = document.getElementById('symbol-container');
+
+            const symbolImage = document.getElementById('symbol-schoen');
+
+            fetch('../dataset.json')
+                .then(response => response.json())
+                .then(data => {
+                    const symbols = data.symbols;
+
+                    symbols.forEach(symbol => {
+                        const button = document.createElement('button');
+                        button.textContent = symbol.name;
+                        button.addEventListener('click', () => {
+                            symbolImage.src = symbolImages[symbol.id];
+                            symbolImage.style.display = 'block';
+                        });
+
+                        symbolContainer.appendChild(button);
+                    });
+                })
+                .catch(error => {
+                    console.error('Er is een fout opgetreden bij het ophalen van de producten:', error);
+                });
+    </script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap');
+body{
+    margin: 0px;
+    padding: 0px;
+    font-size: 20px;
+    font-family: Figtree;
+}
+nav{
+    display: flex;
+    justify-content: center;
+    background-color: #353531;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+}
+.logo{
+    background-color: white;
+    border-radius: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 5px solid #ec4e20;
+}
+.fotoLogo{
+    height: 160px;
+    padding: 10px;
+}
+#container {
+    display: flex;
+    width: 80vw;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
+    justify-content: space-around;
+    background-color: #ec4e20;
+    border-radius: 50px;
+}
+
+.producten {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    background-color: #fff;
+    margin: 50px;
+    border: 2px solid #353531;
+    border-radius: 50px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.productFoto {
+    width: 250px;
+    margin: 10px;
+}
+
+.productLink {
+    text-decoration: unset;
+    color: black;
+}
+.producten:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.productInfo {
+    padding: 10px;
+}
+
+hr {
+    color: #353531;
+    width: 272px;
+}
+.colourBlok,
+#colour-image{
+    width: 300px;
+    height: 300px;
+}
+#symbol-skateboard{
+    height: 60px;
+    position: absolute;
+    top: 465px;
+    left: 455px;
+}
+#symbol-pet{
+    height: 80px;
+    position: absolute;
+    top: 425px;
+    left: 440px;
+}
+#symbol-schoen{
+    height: 70px;
+    position: absolute;
+    top: 465px;
+    left: 505px;
+}
+#colour-container button,
+#symbol-container button {
+    background-color: #f0f0f0;
+    color: #353531;
+    border: 2px solid #353531;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 5px;
+    width: 100px;
+    height: 40px;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+#colour-container button:hover,
+#symbol-container button:hover {
+    background-color: #ec4e20;
+    color: #ffffff;
+    transform: scale(1.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+#containerProduct{
+    display: flex;
+    width: 80vw;
+    background-color: #353531;
+    border-radius: 50px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
+    padding: 50px;
+    justify-content: space-around;
+    border: 5px solid #ec4e20;
+}
+.buttonContainer{
+    display: flex;
+}
+h5{
+    color: white;
+}
